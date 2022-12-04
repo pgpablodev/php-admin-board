@@ -70,9 +70,9 @@
                                                 <td><?php echo $proveedor?></td>
                                                 <td><?php echo $numAlbaran?></td>
                                                 <td><?php echo $fecha?></td>
-                                                <td><?php echo $baseimponible?></td>
-                                                <td><?php echo $iva?></td>
-                                                <td><?php echo $total?></td>
+                                                <td><?php echo $baseimponible?> €</td>
+                                                <td><?php echo ($iva*100)?> %</td>
+                                                <td><?php echo $total?> €</td>
                                                 <td>
                                                     <a href="albaranes_edit.php?id=<?php echo base64_encode($id);?>" class="btn btn-secondary btn-sm btn-icon icon-left">
                                                         <i class="entypo-pencil"></i>

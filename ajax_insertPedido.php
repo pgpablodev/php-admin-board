@@ -34,7 +34,7 @@
         }
         $totalAlbaran += $total;
         $sqlActualizaTotal="UPDATE `pedidos` SET `total`='".$total."' WHERE id=".$id_pedido;
-        $sqlActualizaAlbaran="UPDATE `albaranes` SET `baseimponible`='".$totalAlbaran."' WHERE id=".$albaran;
+        $sqlActualizaAlbaran="UPDATE `albaranes` SET `baseimponible`='".$totalAlbaran."', `total`=(`iva`*'".$totalAlbaran."')+'".$totalAlbaran."' WHERE id=".$albaran;
         if($mysqli->query($sqlActualizaTotal) && $mysqli->query($sqlActualizaAlbaran)){
             echo 1;
         }else{

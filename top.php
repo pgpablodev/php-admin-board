@@ -6,7 +6,8 @@
 
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         <a class="me-3 py-2 text-dark text-decoration-none" href="proveedores.php">Proveedores</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" href="albaranes.php">Albaranes</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="pedidos.php">Pedidos</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="albaranes.php">Albaranes</a>        
         <a class="me-3 py-2 text-decoration-none" style="color: red" href="logout.php">Cerrar sesión</a>
     </nav>
 </div>

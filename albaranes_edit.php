@@ -65,7 +65,7 @@
                                     <?php
                                         include("db.php");
                                         include("funciones.php");
-                                        crearLista("proveedores","id","proveedor","");
+                                        crearLista("proveedores","id","proveedor",conseguirValor('proveedores','id','proveedor',$nombre));
                                     ?>
                                 </select>                                   
                                 </div>
@@ -82,13 +82,6 @@
                                 <label for="fecha" class="col-sm-2 mt-1 control-label">Fecha</label>
                                 <div class="col-sm-4">
                                     <input type="date" class="form-control" id="fecha" name="fecha" placeholder="fecha" value="<?php echo $fecha ?>">
-                                </div>
-                            </div>
-                            <div class="form-group row mb-3">
-                                <div class="col-sm-3"></div>
-                                <label for="base" class="col-sm-2 mt-1 control-label">Base imponible</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="base" name="base" placeholder="Base imponible" value="<?php echo $base ?>">
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
@@ -122,7 +115,6 @@
                     let proveedor = $("#nombre").val()
                     let numero = $("#numero").val()
                     let fecha = $("#fecha").val()
-                    let base = $("#base").val()
                     let iva = $("#iva").val()
 
                     var formData = new FormData()
@@ -130,7 +122,6 @@
                     formData.append("proveedor",proveedor)
                     formData.append("numero",numero)
                     formData.append("fecha",fecha)
-                    formData.append("base",base)
                     formData.append("iva",iva)
 
                     let error=0;

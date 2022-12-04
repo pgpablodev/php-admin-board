@@ -84,7 +84,7 @@
                                 <button type="button" id="btnNuevoPedido" class="btn btn-dark">Crear</button>                                
                             </div>
                             <div class="col-sm-2">
-                                <a href="pedidos_new.php" id="btnVolver" class="btn btn-secondary">Volver</a>
+                                <a href="pedidos.php" id="btnVolver" class="btn btn-secondary">Volver</a>
                             </div>
                         </div>
                         </form>
@@ -151,7 +151,7 @@
                                     message:"<h3>Pedido insertado correctamente</h3>",
                                     title:"<i class='fa-solid fa-circle-info fa-3x text-info'></i><span class='text-info'>&nbsp;INFORMACIÓN</span>",
                                     callback: function () {
-                                        $(location).attr('href','pedidos_new.php');
+                                        $(location).attr('href','pedidos.php');
                                     }
                                 });                          
                             }else{
