@@ -46,11 +46,12 @@
                         <tbody>
                             <?php
                                 include("db.php");
-                                $sqlPedido = "SELECT `pedidos`.`id`, `albaranes`.`numalbaran`, `pedidos`.`total` FROM `pedidos` INNER JOIN `albaranes` ON `pedidos`.`idalbaran`=`albaranes`.`id`";                                
+                                $sqlPedido = "SELECT `pedidos`.`id`, `pedidos`.`idalbaran`, `albaranes`.`numalbaran`, `pedidos`.`total` FROM `pedidos` INNER JOIN `albaranes` ON `pedidos`.`idalbaran`=`albaranes`.`id`";                                
                                 $result = $mysqli->query($sqlPedido);
                                 if($result->num_rows>0){
                                     while($fila=$result->fetch_assoc()){
                                         $id = $fila["id"];
+                                        $idAlbaran = $fila["idalbaran"];
                                         $numAlbaran = $fila["numalbaran"];
                                         $total = $fila["total"];
                                         $sqlLineasPedido = "SELECT `producto`, `precio` FROM `lineaspedido` WHERE `idpedido`=".$id;
@@ -86,11 +87,11 @@
 
                                                         <script>
                                                             $(document).ready(function(){
-                                                                $("#btnEliminarAlbaran<?php echo $id; ?>").click(function(){
+                                                                $("#btnEliminarPedido<?php echo $id; ?>").click(function(){
                                                                     var parent = $(this).parent("td").parent("tr");
                                                                     bootbox.confirm({
                                                                         closeButton: false,
-                                                                        message: "<h3>¿Desea eliminar el albarán <?php echo $numAlbaran ?>?</h3>",
+                                                                        message: "<h3>¿Desea eliminar el pedido?</h3>",
                                                                         buttons: {
                                                                             confirm: {
                                                                                 label: 'Sí',
@@ -104,15 +105,19 @@
                                                                         callback: function(result){
                                                                             if(result){
                                                                                 $.ajax({
-                                                                                    url: 'ajax_deleteAlbaran.php',
-                                                                                    data: {id: <?php echo $id; ?>},
+                                                                                    url: 'ajax_deletePedido.php',
+                                                                                    data: {
+                                                                                        id: <?php echo $id; ?>,
+                                                                                        idAlbaran: <?php echo $idAlbaran; ?>
+                                                                                    },
                                                                                     type: 'POST',
                                                                                     dataType: 'html',
                                                                                     success : function(data){
+                                                                                        alert(data)
                                                                                         if(data==1){
                                                                                             bootbox.alert({
                                                                                                 closeButton: false,
-                                                                                                message:"<h3>Albarán eliminado correctamente</h3>",
+                                                                                                message:"<h3>Pedido eliminado correctamente</h3>",
                                                                                                 title:"<i class='fa-solid fa-circle-info fa-3x text-info'></i><span class='text-info'>&nbsp;INFORMACIÓN</span>",
                                                                                                 callback: function(){
                                                                                                     parent.fadeOut('slow')
@@ -121,7 +126,7 @@
                                                                                         }else{
                                                                                             bootbox.dialog({
                                                                                                 closeButton: false,
-                                                                                                message:"<h3>Error en la eliminación del albarán</h3>",
+                                                                                                message:"<h3>Error en la eliminación del pedido</h3>",
                                                                                                 title:"<i class='fa-solid fa-circle-info fa-3x text-info'></i><span class='text-info'>&nbsp;INFORMACIÓN</span>",
                                                                                             });
                                                                                         }
