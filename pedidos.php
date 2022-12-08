@@ -28,7 +28,7 @@
                     <a href="pedidos_new.php" class="btn btn-secondary btn-sm btn-icon icon-left">
                         <i class="entypo-plus"></i>
                         Nuevo
-                    </a>
+                    </a>                    
                 </div>
             </header>
 
@@ -76,13 +76,21 @@
                                                     </td>
                                                     <td><?php echo $total ?> €</td>
                                                     <td>
-                                                        <a href="pedidos_edit.php?id=<?php echo base64_encode($id); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                                        <a href="pedidos_edit.php?id=<?php echo base64_encode($id); ?>" class="btn btn-success btn-sm btn-icon icon-left">
                                                             <i class="entypo-pencil"></i>
                                                             Editar
                                                         </a>
                                                         <button id="btnEliminarPedido<?php echo $id; ?>" class="btn btn-danger btn-sm btn-icon icon-left">
                                                             <i class="entypo-cancel"></i>
                                                             Eliminar
+                                                        </button>
+                                                        <a href="pedidos_export.php?id=<?php echo base64_encode($id); ?>" class="btn btn-dark btn-sm btn-icon icon-left">
+                                                            <i class="entypo-download"></i>
+                                                            Exportar
+                                                        </a>
+                                                        <button class="btn btn-dark btn-sm btn-icon icon-left text-light" id="btnImportarPedido<?php echo $id; ?>">
+                                                            <i class="entypo-upload"></i>
+                                                            Importar
                                                         </button>
 
                                                         <script>
@@ -113,7 +121,6 @@
                                                                                     type: 'POST',
                                                                                     dataType: 'html',
                                                                                     success : function(data){
-                                                                                        alert(data)
                                                                                         if(data==1){
                                                                                             bootbox.alert({
                                                                                                 closeButton: false,
@@ -139,7 +146,59 @@
                                                                         }
                                                                     });
                                                                 })
-                                                            })		
+
+                                                                $("#btnImportarPedido<?php echo $id; ?>").click(function(){
+                                                                    bootbox.confirm({
+                                                                        closeButton: false,
+                                                                        message: "<h3>¿Desea importar artículos a este pedido?</h3>",
+                                                                        buttons: {
+                                                                            confirm: {
+                                                                                label: 'Sí',
+                                                                                className: 'btn-success'
+                                                                            },
+                                                                            cancel: {
+                                                                                label: 'No',
+                                                                                className: 'btn-danger'
+                                                                            }
+                                                                        },
+                                                                        callback: function(result){
+                                                                            if(result){
+                                                                                $.ajax({
+                                                                                    url: 'ajax_importPedido.php',
+                                                                                    data: {
+                                                                                        id: <?php echo $id; ?>,
+                                                                                        idAlbaran: <?php echo $idAlbaran; ?>
+                                                                                    },
+                                                                                    type: 'POST',
+                                                                                    dataType: 'html',
+                                                                                    success : function(data){
+                                                                                        if(data==1){
+                                                                                            bootbox.alert({
+                                                                                                closeButton: false,
+                                                                                                message:"<h3>Artículos importados correctamente</h3>",
+                                                                                                title:"<i class='fa-solid fa-circle-info fa-3x text-info'></i><span class='text-info'>&nbsp;INFORMACIÓN</span>",
+                                                                                                callback: function(){
+                                                                                                    
+                                                                                                }
+                                                                                            });
+                                                                                        }else{
+                                                                                            bootbox.dialog({
+                                                                                                closeButton: false,
+                                                                                                message:"<h3>Error en la importación.</h3>",
+                                                                                                title:"<i class='fa-solid fa-circle-info fa-3x text-info'></i><span class='text-info'>&nbsp;INFORMACIÓN</span>",
+                                                                                            });
+                                                                                        }
+                                                                                    },
+                                                                                    error : function(xhr, status) {
+                                                                                        alert('Fallo en la petición al servidor');
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                })
+                                                            })                                                           
+                                                            
                                                         </script>
                                                     </td>
                                                 </tr>
@@ -149,7 +208,7 @@
                                 }
                             ?>                            
                         </tbody>
-                    </table>
+                    </table>                   
                 </div>
             </main>
 

@@ -74,7 +74,7 @@
                                                 <td><?php echo ($iva*100)?> %</td>
                                                 <td><?php echo $total?> €</td>
                                                 <td>
-                                                    <a href="albaranes_edit.php?id=<?php echo base64_encode($id);?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                                    <a href="albaranes_edit.php?id=<?php echo base64_encode($id);?>" class="btn btn-success btn-sm btn-icon icon-left">
                                                         <i class="entypo-pencil"></i>
                                                         Editar
                                                     </a>

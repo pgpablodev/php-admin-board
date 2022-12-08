@@ -32,21 +32,21 @@
             <main>
                 <div class="row">
                     <div class="col-md-4 text-center">
-                        <h2>Proveedores</h2>
+                        <h2><a style="text-decoration: none; color: inherit;" href="proveedores.php">Proveedores</a></h2>
                         <a href="proveedores_new.php" class="btn btn-secondary btn-sm btn-icon icon-left">
                             <i class="entypo-plus"></i>
                             Nuevo
                         </a>
                     </div>
                     <div class="col-md-4 text-center">
-                        <h2>Pedidos</h2>
+                        <h2><a style="text-decoration: none; color: inherit;" href="pedidos.php">Pedidos</a></h2>
                         <a href="pedidos_new.php" class="btn btn-secondary btn-sm btn-icon icon-left">
                             <i class="entypo-plus"></i>
                             Nuevo
                         </a>
                     </div>
                     <div class="col-md-4 text-center">
-                        <h2>Albaranes</h2>
+                        <h2><a style="text-decoration: none; color: inherit;" href="albaranes.php">Albaranes</a></h2>
                         <a href="albaranes_new.php" class="btn btn-secondary btn-sm btn-icon icon-left">
                             <i class="entypo-plus"></i>
                             Nuevo

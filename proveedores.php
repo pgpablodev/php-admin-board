@@ -72,7 +72,7 @@
                                                 <td><?php echo $telefono?></td>
                                                 <td><?php echo $email?></td>
                                                 <td>
-                                                    <a href="proveedores_edit.php?id=<?php echo base64_encode($id);?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                                    <a href="proveedores_edit.php?id=<?php echo base64_encode($id);?>" class="btn btn-success btn-sm btn-icon icon-left">
                                                         <i class="entypo-pencil"></i>
                                                         Editar
                                                     </a>
